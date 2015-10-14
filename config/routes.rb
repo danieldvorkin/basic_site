@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'user/new'
+
   root 'home#home'
   #   new name      actual route 
   get 'about'   => 'home#about'
   get 'help'    => 'home#help'
   get 'contact' => 'home#contact'
+  get 'signup'  => 'users#new'
 
 
 
