@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'session/new'
+  get 'sessions/new'
 
   root 'home#home'
-  
   #   new name      actual route 
   get 'about'   => 'home#about'
   get 'help'    => 'home#help'

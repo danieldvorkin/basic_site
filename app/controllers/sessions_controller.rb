@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
 
   end
@@ -8,10 +8,11 @@ class SessionController < ApplicationController
   	user = User.find_by(email: params[:session][:email].downcase)
 
   	# if the user exist and the pw params pass the authentication process provided by has_secure_password then.....
-  	if user && user.authenticate?(params[:session][:password])
+  	if user && user.authenticate(params[:session][:password])
   		# Log the user in and redirect to profile page/where ever desired
   	else
   		# Create and display error (Failed sign in!)
+  		flash[:danger] = "Invalid email/password combination"
   		render 'new'
   	end
   end
