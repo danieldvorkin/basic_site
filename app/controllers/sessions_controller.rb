@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   		# Log the user in and redirect to profile page/where ever desired
   		log_in user
   		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-  		redirect_to user
+  		redirect_back_or user
   		flash[:success] = "Welcome Back!! " + user.name
   	else
   		# Create and display error (Failed sign in!)
