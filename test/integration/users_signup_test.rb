@@ -7,5 +7,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   		post users_path, user: { name: "", email: "user@invalid", password: "foo", password_confirmation: "boo"}
   	end
   	assert_template 'users/new'
+  	assert is_logged_in?
   end
 end
