@@ -1,7 +1,14 @@
 <li>
   <%= gravatar_for user %>
-  <%= link_to user.name, user %>
+  <u><%= link_to user.name, user %></u>
   <% if current_user.admin? && !current_user?(user) %>
   	| <%= link_to 'Delete', user, method: :delete, data: { confirm: "You Sure?" } %>
-  <% end %>
+  <% end %><br/>
+  Active User: 
+  <% if user.activated?  === true %>
+  	<i class="fa fa-check-square"></i>
+  <% else %>
+  	<i class="fa fa-times"></i>
+  <% end %><br/>
+  Active Since: <%= user.activated_at %>
 </li>
