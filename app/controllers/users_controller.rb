@@ -26,21 +26,28 @@ class UsersController < ApplicationController
     # New view supplies the controller with user input values
   	@user = User.new(user_params)
   	if @user.save
-      log_in @user
-  		flash[:success] = "Welcome to the Sample App!" + @user.name
-  		redirect_to @user
+      # Send and email using the account_activation functions built in user_mailer, deliver_now ofcourse
+      UserMailer.account_activation(@user).deliver_now
+      # Output to the user to check email
+  		flash[:info] = "Please check your email to activate your account"
+      # Redirecto to rool url
+  		redirect_to root_url
   	else
   		render 'new'
   	end
   end
 
   def update
+    # Find the user by ID
     @user = User.find_by(params[:id])
+    # if the user click update, using the new params entered by the user
     if @user.update_attributes(user_params)
       # Handle dat
       flash[:success] = "Profile updated"
+      # redirecto to user page
       redirect_to @user
     else
+      # if fails, stay on page
       render 'edit'
     end
   end
