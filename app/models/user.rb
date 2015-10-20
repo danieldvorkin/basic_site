@@ -53,6 +53,11 @@ class User < ActiveRecord::Base
 		reset_sent_at < 2.hours.ago
 	end
 
+	def feed
+		# user_id = ?, id is used to avoid sql injection, a terrible security hole
+		Micropost.where("user_id = ?", id)
+	end
+
 	private
 		def downcase_email
 			# downcases the email 
