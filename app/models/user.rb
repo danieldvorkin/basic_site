@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 										uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+	has_many :microposts
 
 	def User.digest(string)
 		# assign the ActiveModel::SecurePassword minimum cost if there is, if not, assign the cost of the BCrypt::Engine
