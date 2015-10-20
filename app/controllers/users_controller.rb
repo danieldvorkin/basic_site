@@ -15,7 +15,9 @@ class UsersController < ApplicationController
   def show
     # Display the existing user data to the view
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
+
 
   def edit
     # Edit view now has access to existing user

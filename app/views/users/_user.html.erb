@@ -10,5 +10,6 @@
   <% else %>
   	<i class="fa fa-times"></i>
   <% end %><br/>
-  Active Since: <%= user.activated_at %>
+  Active Since: <%= user.activated_at %><br/>
+  Total Posts: <%= user.microposts.count %>
 </li>
