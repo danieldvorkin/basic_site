@@ -33,6 +33,7 @@ gem 'mini_magick'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'pg'
+gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
