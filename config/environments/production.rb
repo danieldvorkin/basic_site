@@ -77,7 +77,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.default_url_options = { host: 'microp.herokuapp.com', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'microp.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
