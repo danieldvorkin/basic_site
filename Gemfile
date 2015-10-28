@@ -34,6 +34,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'pg'
 gem 'rails_12factor'
+gem 'momentjs-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
