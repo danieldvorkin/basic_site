@@ -10,9 +10,8 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage = Fog::Storage.new(credentials.merge({:region => DEFAULT_REGION}))
-    storage
-  else
-    storage :file
+  # else
+  #   storage :file
   end
   
 
