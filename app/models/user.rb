@@ -11,8 +11,12 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	has_many :microposts, dependent: :destroy
+
 	has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+	has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
 	has_many :following, through: :active_relationships, source: :followed
+	has_many :followers, through: :passive_relationships, source: :follower
 
 	def User.digest(string)
 		# assign the ActiveModel::SecurePassword minimum cost if there is, if not, assign the cost of the BCrypt::Engine
