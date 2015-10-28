@@ -1,15 +1,19 @@
-<li>
-  <%= gravatar_for user %>
-  <u><%= link_to user.name, user %></u>
-  <% if current_user.admin? && !current_user?(user) %>
-  	| <%= link_to 'Delete', user, method: :delete, data: { confirm: "You Sure?" } %>
-  <% end %><br/>
-  Active User: 
-  <% if user.activated?  === true %>
-  	<i class="fa fa-check-square"></i>
-  <% else %>
-  	<i class="fa fa-times"></i>
-  <% end %><br/>
-  Active Since: <%= user.activated_at %><br/>
-  Total Posts: <%= user.microposts.count %>
-</li>
+<div class="col-lg-3 col-xs-6 col-md-3">
+  <%= link_to user, class: "thumbnail" do %>
+    <li>
+      <%= gravatar_for user %>
+      <u></u>
+      <% if current_user.admin? && !current_user?(user) %>
+        | <%= link_to 'Delete', user, method: :delete, data: { confirm: "You Sure?" } %>
+      <% end %><br/>
+      Active User: 
+      <% if user.activated?  === true %>
+        <i class="fa fa-check-square"></i>
+      <% else %>
+        <i class="fa fa-times"></i>
+      <% end %><br/>
+      Active Since: <%= user.activated_at %><br/>
+      Total Posts: <%= user.microposts.count %>
+    </li>
+  <% end %>
+</div>
